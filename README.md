@@ -8,7 +8,27 @@ Use it in combination with the reflow logger in Firefox (Console > CSS > Info).
 
 ## Usage
 
-Copy and paste the script in your browsers Console.
+Copy and paste the script in your browsers Console, or drag this <a href="javascript:(var jaia=function(){function d(a){var
+b=[].slice.call(a.target.classList),c=a.oldValue?a.oldValue.split("
+"):[],d=b.filter(function(a){return-1===c.indexOf(a)}),e=c.filter(function(a){return-1===b.indexOf(a)});d.length&&console.log("Class
+'"+d.join(", ")+"' added",a.target),e.length&&console.log("Class '"+e.join(",
+")+"' removed",a.target)}function e(a){var b=function(a){return
+a.split(";").filter(function(a){return""!==a.trim()}).reduce(function(a,b){return
+b=b.split(":").map(function(a){return
+a.trim()}),a[b[0]]=b[1],a},{})},c=b(a.target.getAttribute("style")),d=b(a.oldValue||""),e=Object.keys(c).filter(function(a){return!d[a]}),f=Object.keys(d).filter(function(a){return!c[a]}),g=Object.keys(c).filter(function(a){return
+c[a]!==d[a]});e.forEach(function(b){console.log("Style added '"+b+":
+"+c[b]+"'",a.target)}),f.forEach(function(b){console.log("Style removed '"+b+":
+"+d[b]+"'",a.target)}),g.forEach(function(b){void 0!==d[b]&&console.log("Style
+change '"+b+"', newValue '"+c[b]+"', was '"+d[b]+"'",a.target)})}function
+f(a){[].forEach.call(a.addedNodes,function(b){console.log("Node added",b,"as
+child of",a.target)})}function
+g(a){[].forEach.call(a.removedNodes,function(b){console.log("Node
+removed",b,"as child of",a.target)})}var
+a=document.body,b=window.MutationObserver||window.WebKitMutationObserver||window.MozMutationObserver,c=new
+b(function(a){a.forEach(function(a){"attributes"===a.type&&"class"===a.attributeName?d(a):"attributes"===a.type&&"style"===a.attributeName&&e(a),"childList"===a.type&&a.addedNodes.length>0&&f(a),"childList"===a.type&&a.removedNodes.length>0&&g(a)})});return{start:function(){c.observe(a,{attributes:!0,childList:!0,characterData:!0,subtree:!0,attributeOldValue:!0})},stop:function(){c.disconnect()}}}())">bookmarklet</a>&nbsp;
+to the bookmarks toolbar of your browser in order to inject it to the website
+you are currently visiting.
+
 Then to start logging, run:
 
 ```javascript
